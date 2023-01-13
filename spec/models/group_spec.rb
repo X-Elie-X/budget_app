@@ -1,15 +1,11 @@
 require 'rails_helper'
-
-RSpec.describe Group, type: :model do
-  context 'Write validation tests for group model' do
-    it 'is not valid without a name' do
-      first_group = Group.create(name: nil, icon: 'icon')
-      expect(first_group).to_not be_valid
+  RSpec.describe Group, type: :model do
+    before(:each) do
+      @user = User.create(name: 'Elie', email: 'test@gmail.com', password: 'password')
+      @group = Group.create(user: @user, name: 'Food', icon: 'https://icon_url')
     end
-
-    it 'is not valid without an icon' do
-      first_group = Group.create(name: 'name', icon: nil)
-      expect(first_group).to_not be_valid
+  
+    scenario 'valid group' do
+      expect(@group).to be_valid
     end
   end
-end

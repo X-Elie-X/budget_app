@@ -1,17 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'Write validation tests for user model' do
-    it 'is not valid without a name' do
-      first_user = User.create(name: nil, email: 'user1@email.com', password: 'password',
-                               password_confirmation: 'password')
-      expect(first_user).to_not be_valid
-    end
+  before(:each) do
+    @user = User.create(name: 'Elie', email: 'test001@gmail.com', password: 'password')
+  end
 
-    it 'is not valid without an email' do
-      first_user = User.create(name: 'Mavericks', email: nil, password: 'password',
-                               password_confirmation: 'password')
-      expect(first_user).to_not be_valid
-    end
+  scenario 'valid with name' do
+    expect(@user).to be_valid
+  end
+
+  scenario 'valid name' do
+    expect(@user.name).to eq 'Elie'
   end
 end

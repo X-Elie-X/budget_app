@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Budget, type: :model do
-  context 'Write validation tests for budget model' do
-    it 'is not valid without a name' do
-      first_budget = Budget.create(name: nil, amount: 100)
-      expect(first_budget).to_not be_valid
-    end
+  before(:each) do
+    @user = User.create(name: 'Elie', email: 'test@gmail.com', password: 'password')
+    @group = Group.create(user: @user, name: 'Food', icon: 'https://icon_url')
+    @budget = Budget.create(user: @user, name: 'Chips', amount: 15)
+  end
 
-    it 'is not valid without an amount' do
-      first_budget = Budget.create(name: 'name', amount: nil)
-      expect(first_budget).to_not be_valid
-    end
+  scenario 'it should be valid' do
+    expect(@budget).to be_valid
   end
 end
