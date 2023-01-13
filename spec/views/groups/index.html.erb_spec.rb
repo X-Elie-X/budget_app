@@ -21,6 +21,6 @@ RSpec.describe 'Group index page', type: :feature do
     expect(page).to have_content 'Food'
   end
   scenario 'I can see the group total transaction.' do
-    expect(page).to_not have_content 'Total: $' 
+    expect(page).to_not have_content 'Total: $'
   end
 end
