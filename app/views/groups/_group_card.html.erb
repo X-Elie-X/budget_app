@@ -12,6 +12,6 @@
       <%= group.budgets.sum(:amount) %>
     </p>
     <p class="card-text opacity-50"><%= time_ago_in_words(group[:created_at]) %></p>
-    <%= button_to "SELECT", user_groups_path(group), method: :get, class: "btn btn-success" %>
+    <%= button_to "SELECT", user_group_path(current_user.id,group.id), method: :get, class: "btn btn-success" %>
   </div>
 </div>
