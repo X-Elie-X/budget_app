@@ -2,58 +2,17 @@ require 'rails_helper'
 
 RSpec.describe 'Groups', type: :request do
   describe 'GET /index' do
-    it 'returns http success' do
-      get '/groups/index'
-      expect(response).to have_http_status(:success)
+    before(:example) { get '/groups' }
+    it 'returns correct response status' do
+      expect(response).to have_http_status(:ok)
     end
-  end
 
-  describe 'GET /new' do
-    it 'returns http success' do
-      get '/groups/new'
-      expect(response).to have_http_status(:success)
+    it 'renders correct template' do
+      expect(response).to render_template(:index)
     end
-  end
 
-  describe 'GET /show' do
-    it 'returns http success' do
-      get '/groups/show'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /create' do
-    it 'returns http success' do
-      get '/groups/create'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'returns http success' do
-      get '/groups/edit'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /update' do
-    it 'returns http success' do
-      get '/groups/update'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /destroy' do
-    it 'returns http success' do
-      get '/groups/destroy'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /search' do
-    it 'returns http success' do
-      get '/groups/search'
-      expect(response).to have_http_status(:success)
+    it 'returns correct response body' do
+      expect(response.body).to include('Add New Category')
     end
   end
 end

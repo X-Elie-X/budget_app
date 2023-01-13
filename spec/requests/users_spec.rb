@@ -2,58 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   describe 'GET /index' do
-    it 'returns http success' do
-      get '/users/index'
-      expect(response).to have_http_status(:success)
-    end
-  end
+    before(:example) { get '/users' }
 
-  describe 'GET /new' do
-    it 'returns http success' do
-      get '/users/new'
-      expect(response).to have_http_status(:success)
+    it 'returns correct response status' do
+      expect(response).to have_http_status(:ok)
     end
-  end
 
-  describe 'GET /show' do
-    it 'returns http success' do
-      get '/users/show'
-      expect(response).to have_http_status(:success)
+    it 'renders correct template' do
+      expect(response).to render_template(:index)
     end
-  end
 
-  describe 'GET /create' do
-    it 'returns http success' do
-      get '/users/create'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'returns http success' do
-      get '/users/edit'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /update' do
-    it 'returns http success' do
-      get '/users/update'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /destroy' do
-    it 'returns http success' do
-      get '/users/destroy'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /search' do
-    it 'returns http success' do
-      get '/users/search'
-      expect(response).to have_http_status(:success)
+    it 'returns correct response body' do
+      expect(response.body).to include('Users List')
     end
   end
 end
