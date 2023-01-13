@@ -18,7 +18,7 @@ class BudgetsController < ApplicationController
     if @budget.save
       flash[:notice] = 'Budget created successfully'
       @group_budget = @budget.group_budgets.create(group_id: params[:group_id], budget_id: @budget.id)
-      redirect_to groups_path
+      redirect_to user_budgets_path
     else
       render 'new'
     end
