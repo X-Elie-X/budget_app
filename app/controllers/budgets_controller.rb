@@ -9,16 +9,24 @@ class BudgetsController < ApplicationController
   end
 
   def new
+    @groups = Group.where(user_id: current_user.id)
     @budget = Budget.new
+
   end
 
   def create
     @user = current_user
     @budget = @user.budgets.new(budget_params)
+    group_ids= params[:groups]
+
     if @budget.save
+  
+      # implement logic for creating the group-buget record for all the groups selected and the budget created
+      create_gb(group_ids, @budget)
+
+      redirect_to user_group_path(@user.id, group_ids[0])
       flash[:notice] = 'Budget created successfully'
-      @group_budget = @budget.group_budgets.create(group_id: params[:group_id], budget_id: @budget.id)
-      redirect_to user_budgets_path
+
     else
       render 'new'
     end
@@ -27,6 +35,12 @@ class BudgetsController < ApplicationController
   private
 
   def budget_params
-    params.permit(:name, :amount)
+    params.permit(:name, :amount, :groups)
+  end
+
+  def create_gb(group_ids, budget) 
+    group_ids.each do |group_id| 
+      GroupBudget.create(group_id: group_id, budget_id: budget.id)
+    end
   end
 end

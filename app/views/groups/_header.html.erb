@@ -1,11 +1,11 @@
 <header>
   <div class="row">
     <div class="col m-1">
-      <a href="/">
-        <span class="material-symbols-outlined">
-          arrow_back
-          </span>
-      </a>
+    <%= link_to 'javascript:history.go(-1);', class: 'block' do %>
+      <span class="material-symbols-outlined">
+      arrow_back
+      </span> 
+    <% end %>
     </div>
     <div class="col m-1 d-flex flex-column align-items-center pg_title">
       <h3 class="mb-0">CATEGORY</h3>
