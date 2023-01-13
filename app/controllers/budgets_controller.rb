@@ -1,6 +1,7 @@
 class BudgetsController < ApplicationController
   def index
     @budgets = Budget.all.includes([:user]).where(user_id: current_user.id).order(:name)
+    
   end
 
   def show

@@ -1,7 +1,7 @@
 <%= render "budgets/new" %>
 <div class="container d-flex flex-column justify-content-center align-items-center">
 
-  <%= form_with model: @budgets, url: group_budgets_path, method: :post, data: { turbo: false } do |f| %>
+  <%= form_with model: @budgets, url: user_budgets_path, method: :post, data: { turbo: false } do |f| %>
     <div class="field mt-2 mb-2">
         <%= f.text_field :name, autofocus: true, autocomplete: "name" , class: "form-control", placeholder: "Budget Name" %>
     </div>

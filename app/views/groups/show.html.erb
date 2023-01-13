@@ -14,7 +14,7 @@
     <p class="card-text opacity-50"><%= time_ago_in_words(@group[:created_at]) %></p>
   </div>
 </div>
-<%= link_to "Add New Budget", new_user_budget_path(@group), class: "btn btn-success mb-5" %>
+<%= link_to "Add New Budget", new_user_budget_path(current_user.id), class: "btn btn-success mb-5" %>
 <% if @group.budgets.any? %>
     <h1>All Added Budgets</h1>
     <%= render partial: 'budgets/budget_card', locals: { group: @group } %>

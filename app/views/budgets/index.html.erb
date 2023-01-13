@@ -1,2 +1,10 @@
-<h1>Budgets#index</h1>
-<p>Find me in app/views/budgets/index.html.erb</p>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <% @budgets.each do |budgets| %>
+    <%= render partial: 'budgets/budget_card', locals: { budget: budget } %>
+  <% end %>
+  <% if @budgets.empty? %>
+  <h1>There are no budget to show</h1>
+  <% end %>
+  <%= link_to "Add New bugets", new_user_budget_path, class: "btn btn-success mb-5" %>
+
+</div>
