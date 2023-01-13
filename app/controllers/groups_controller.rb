@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
     @group = Group.new(name: params[:name], icon: params[:icon], user_id: @user.id)
     if @group.save
       flash[:notice] = 'Successfully created group.'
-      redirect_to groups_path
+      redirect_to user_groups_path
     else
       render action: 'new'
     end
