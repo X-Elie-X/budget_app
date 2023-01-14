@@ -1,14 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # config.after_initialize do
-  #   Bullet.enable        = true
-  #   Bullet.alert         = true
-  #   Bullet.bullet_logger = true
-  #   Bullet.console       = true
-  #   Bullet.rails_logger  = true
-  #   Bullet.add_footer    = true
-  # end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -69,8 +61,7 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
+
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
